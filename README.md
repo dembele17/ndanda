@@ -3,6 +3,9 @@
 Next.js App Router / TypeScript / Tailwind CSS / Supabase Auth / PostgreSQL のアプリです。
 実装は `frontend/` にあります。既存の `backend/` と `docker-compose.yml` はそのまま維持しています。
 
+公開URL：**[うちのくるま](https://ndanda-eight.vercel.app)**（家族アカウントでのログインが必要です）。
+Vercel HobbyとSupabase Freeで運用します。公開設定と更新方法は [frontend/docs/DEPLOYMENT.md](frontend/docs/DEPLOYMENT.md) を参照してください。
+
 起動・Supabase作成・家族登録・環境変数・SQL・検証の手順は [frontend/README.md](frontend/README.md) を参照してください。
 
 ```bash

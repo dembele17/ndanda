@@ -4,6 +4,8 @@
 「使用者・日時・用途」を共有し、予定が重なったら警告を表示します。
 「それでも登録する」を選ぶと重複したまま保存できます。優先順位・承認の機能はありません。
 
+公開URL：**[https://ndanda-eight.vercel.app](https://ndanda-eight.vercel.app)**。家族アカウントでログインしてください。
+
 ## URLから使えるように公開する場合
 
 公開構成と無料枠の制限、公開用環境変数、更新手順は [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) に整理しています。

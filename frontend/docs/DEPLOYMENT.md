@@ -23,10 +23,13 @@ Vercel Hobby：Next.js の画面・認証確認・予定の操作
 
 ## 今回の公開方法
 
+公開URL：**[https://ndanda-eight.vercel.app](https://ndanda-eight.vercel.app)**。
+Vercel管理画面：[dembele17 / ndanda](https://vercel.com/dembele17/ndanda)。
+
 2026-10-13、Vercelの `dembele17` チームがHobbyであることをAPIで確認し、既存SupabaseがFreeであることを利用者がDashboardで確認しました。
 アプリのコードはGitHubの `dembele17/ndanda` の `main` に反映しています。
 
-初回は **Vercel CLIから `frontend` を直接送信**します。Vercel側のプロジェクト名は `ndanda`、Node.jsは24.xです。
+初回は **Vercel CLIから `frontend` を直接送信**して、本番デプロイがREADYになることを確認しました。Vercel側のプロジェクト名は `ndanda`、Node.jsは24.xです。
 この方式では送信する `frontend` 自体がソースのルートなので、VercelのRoot Directoryは未指定（プロジェクトルート）にします。
 後述するGitHub取り込み方式の `frontend` 指定とは異なります。CLI公開のままRoot Directoryを `frontend` に変更しないでください。
 
@@ -44,6 +47,13 @@ npm_config_cache="$PWD/.npm-cache" npm exec --yes --package=vercel@63.1.2 -- ver
 `.npm-cache`、`.vercel`、環境ファイル、個人用SQLはGitとCLI送信の対象から除外しています。
 本番にはSupabase公開環境変数2つを設定し、Previewには本番DBの値を設定していません。
 PreviewのみVercel認証で保護し、本番はアプリのSupabase Auth・RLSで家族に限定します。
+
+SupabaseのAuthentication > URL ConfigurationのSite URLは **https://ndanda-eight.vercel.app** を指定します。
+現在のメール・パスワード認証はRedirect URLsを使うコールバックを持ちません。将来メール確認・OAuth・パスワード再設定を追加するときに、実装するコールバックURLを許可してください。
+
+公開前の `npm run lint`、`npm run build`、16件のロジック・RLSテストは成功しています。
+Vercelでも本番ビルドが成功し、未ログインの実ブラウザで `/login` への遷移、空欄ログイン時の日本語エラー、スマートフォンとPCの横はみ出し・ブラウザエラーがないことを確認しました。
+公開時の `npm audit --omit=dev` は既知の脆弱性0件です。
 
 将来GitHubから自動更新したい場合は、VercelのAccount Settings > AuthenticationでGitHubのログイン接続を追加し、プロジェクトに `dembele17/ndanda` を接続します。
 その際はGitHubリポジトリ全体を取り込むため、Root Directoryを **frontend** に変更してください。
