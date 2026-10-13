@@ -32,6 +32,14 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
+/test-results/
+/playwright-report/
+/.npm-cache/
+/.playwright-browsers/
+/.playwright-libs/
+/.npm-audit.json
+/.next-e2e/
 
 # vercel
 .vercel
@@ -39,3 +47,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Personal family enrollment data
+/supabase/*.local.sql
