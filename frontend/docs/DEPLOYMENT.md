@@ -49,6 +49,7 @@ npm_config_cache="$PWD/.npm-cache" npm exec --yes --package=vercel@63.1.2 -- ver
 PreviewのみVercel認証で保護し、本番はアプリのSupabase Auth・RLSで家族に限定します。
 
 SupabaseのAuthentication > URL ConfigurationのSite URLは **https://ndanda-eight.vercel.app** を指定します。
+2026-10-13、利用者がこのSite URLを設定・保存し、本番URLで既存の家族アカウントによるログインと予定の表示が成功することを確認しました。
 現在のメール・パスワード認証はRedirect URLsを使うコールバックを持ちません。将来メール確認・OAuth・パスワード再設定を追加するときに、実装するコールバックURLを許可してください。
 
 公開前の `npm run lint`、`npm run build`、16件のロジック・RLSテストは成功しています。
