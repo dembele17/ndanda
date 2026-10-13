@@ -21,6 +21,34 @@ Vercel Hobby：Next.js の画面・認証確認・予定の操作
 公開後はWSLやWindowsのPCを起動しておく必要がありません。
 データは現在もSupabaseに保存されているため、Vercelの再起動や再デプロイで予定は消えません。
 
+## 今回の公開方法
+
+2026-10-13、Vercelの `dembele17` チームがHobbyであることをAPIで確認し、既存SupabaseがFreeであることを利用者がDashboardで確認しました。
+アプリのコードはGitHubの `dembele17/ndanda` の `main` に反映しています。
+
+初回は **Vercel CLIから `frontend` を直接送信**します。Vercel側のプロジェクト名は `ndanda`、Node.jsは24.xです。
+この方式では送信する `frontend` 自体がソースのルートなので、VercelのRoot Directoryは未指定（プロジェクトルート）にします。
+後述するGitHub取り込み方式の `frontend` 指定とは異なります。CLI公開のままRoot Directoryを `frontend` に変更しないでください。
+
+GitHubの自動デプロイは未設定です。**GitHubにpushするだけでは公開アプリは更新されません。**
+更新後はWSLで以下を実行します。既存のCLIログイン・ `.vercel/project.json` を使用します。
+
+```bash
+cd /home/dembele/ndanda/frontend
+npm run lint
+npm run build
+npm_config_cache="$PWD/.npm-cache" npm exec --yes --package=vercel@63.1.2 -- vercel deploy --prod --scope dembele17 --global-config "$PWD/.npm-cache/deployment-tools/vercel-config"
+```
+
+別のPCではCLIログインと `vercel link` が必要です。認証情報を他のPCへコピーしたりGitに登録したりしないでください。
+`.npm-cache`、`.vercel`、環境ファイル、個人用SQLはGitとCLI送信の対象から除外しています。
+本番にはSupabase公開環境変数2つを設定し、Previewには本番DBの値を設定していません。
+PreviewのみVercel認証で保護し、本番はアプリのSupabase Auth・RLSで家族に限定します。
+
+将来GitHubから自動更新したい場合は、VercelのAccount Settings > AuthenticationでGitHubのログイン接続を追加し、プロジェクトに `dembele17/ndanda` を接続します。
+その際はGitHubリポジトリ全体を取り込むため、Root Directoryを **frontend** に変更してください。
+GitHub連携の追加自体に有料プランは不要です。プラン変更・Pro体験は選びません。
+
 ## 調査したアプリ構成
 
 | 場所 | 役割 |

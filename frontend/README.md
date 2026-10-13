@@ -6,8 +6,9 @@
 
 ## URLから使えるように公開する場合
 
-推奨構成と無料枠の制限、公開用環境変数、承認後の手順は [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) に整理しています。
-公開・GitHubへのpush・プラン変更は承認後に進めます。
+公開構成と無料枠の制限、公開用環境変数、更新手順は [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) に整理しています。
+2026-10-13にVercel Hobbyと既存Supabase Freeを使う公開の承認を受けています。初回はVercel CLIを使用し、GitHubへのpushだけでは公開アプリは更新されません。
+有料プランへの変更・課金には別途確認が必要です。
 
 ## 1. WSLでの準備
 

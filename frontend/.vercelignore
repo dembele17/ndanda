@@ -5,6 +5,7 @@
 
 # Generated files, downloaded test tools, and browser profiles
 .git
+.vercel
 node_modules
 .next
 .next-e2e
